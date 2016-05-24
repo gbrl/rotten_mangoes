@@ -1,7 +1,8 @@
-    <h2>All Users</h2>
+    <h2>ADMIN: All Users</h2>
     <% @users.each do |u| %>
       <hr />
       <h3><%= u.full_name %></h3>
       <%= u.email %>
       <p>Admin? <%= u.admin ? "YES" : "NO" %></p>
+      <p>Number of reviews: <%= u.reviews.count  %></p>
     <% end %>

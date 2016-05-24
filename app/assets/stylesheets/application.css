@@ -18,3 +18,5 @@ body {padding: 3% !important}
 hr {max-width: 100% !important;}
 footer {margin-bottom: 50px;}
 form {max-width: 600px !important;}
+nav {float: right;}
+nav ul, nav ul li {list-style: none;}

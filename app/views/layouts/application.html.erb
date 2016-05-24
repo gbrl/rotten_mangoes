@@ -9,6 +9,16 @@
   <script src="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.js"></script>
   <%= csrf_meta_tags %>
 </head>
+<header>
+<nav>
+<ul>
+<% if current_user && current_user.admin %>
+<li><%= link_to  "Admin", admin_users_path %></li>
+<% end %>
+<li><%= link_to "Movies", movies_path %></li>
+</ul>
+</nav>
+</header>
 <body>
  <h1>R0t3N M4NGoEs</h1>
   <% flash.each do |key, value| %>
