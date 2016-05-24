@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+body {padding: 3% !important}
+hr {max-width: 100% !important;}
+footer {margin-bottom: 50px;}
+form {max-width: 600px !important;}

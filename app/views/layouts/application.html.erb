@@ -2,13 +2,18 @@
 <html>
 <head>
   <title>RottenMangoes</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.css">
+
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <script src="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.js"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <% flash.each do |key, value| %>
+    <%= content_tag(:div, value) %>
+  <% end %>
+  <%= yield %>
+  <%= render 'layouts/footer' %>
 </body>
 </html>
