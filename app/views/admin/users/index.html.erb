@@ -1,6 +1,7 @@
-    <h1>All Users</h1>
+    <h2>All Users</h2>
     <% @users.each do |u| %>
-    <hr />
-    <h3><%= u.full_name %></h3>
-    <%= u.email %>
+      <hr />
+      <h3><%= u.full_name %></h3>
+      <%= u.email %>
+      <p>Admin? <%= u.admin ? "YES" : "NO" %></p>
     <% end %>
