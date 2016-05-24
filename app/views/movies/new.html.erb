@@ -1,6 +1,9 @@
 <%= link_to "Back to all movies", movies_path %>
 
 <h2>Submit a movie!</h2>
-<%= form_for @movie do |f| %>
-  <%= render 'form' %>
+<%= form_for @movie, html: { multipart: true } do |f| %>
+  <%= render partial: 'form', locals: {f: f}%>
+  <div>
+    <%= f.submit "Create Movie" %> 
+  </div>
 <% end %>
