@@ -57,8 +57,7 @@ class Admin::UsersController < Admin::ApplicationController
     redirect_to admin_user_path(params[:id])
   end
 
-
-    protected
+  protected
 
   def user_params
     params.require(:user).permit(:email, :firstname, :lastname, :password, :password_confirmation, :admin)
