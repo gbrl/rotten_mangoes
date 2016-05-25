@@ -12,22 +12,20 @@ class SearchController < ApplicationController
     
     @duration = params[:duration].to_s if params[:duration]
 
+
     case @duration
     when "Under 90 minutes" 
-      duration_min = 0
-      duration_max = 90
+      @movies = Movie.short.where("title LIKE ? AND director LIKE ?", "%#{@title}%","%#{@director}%")
     when "Between 90 and 120 minutes" 
-      duration_min = 90
-      duration_max = 120
+      @movies = Movie.medium.where("title LIKE ? AND director LIKE ?", "%#{@title}%","%#{@director}%")
     when "Over 120 minutes"
-      duration_min = 120
-      duration_max = 9999999
+      @movies = Movie.long.where("title LIKE ? AND director LIKE ?", "%#{@title}%","%#{@director}%")
     else
-      duration_min = 0
-      duration_max = 9999999
+      @movies = Movie.where("title LIKE ? AND director LIKE ?", "%#{@title}%","%#{@director}%")
     end
 
-     @movies = Movie.where("title LIKE ? AND director LIKE ? AND runtime_in_minutes BETWEEN ? AND ?", "%#{@title}%","%#{@director}%","#{duration_min}","#{duration_max}")
+    @movies = [] unless params[:duration] && params[:director] && params[:title]
+    
   end
 
 end

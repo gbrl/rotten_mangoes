@@ -1,6 +1,10 @@
 class Movie < ActiveRecord::Base
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+  
+  scope :short, -> { where("runtime_in_minutes BETWEEN ? AND ?", "0","90") }
+  scope :medium, -> { where("runtime_in_minutes BETWEEN ? AND ?", "90","120") }
+  scope :long, -> { where("runtime_in_minutes BETWEEN ? AND ?", "120","999999") }
 
   has_many :reviews
 
