@@ -15,4 +15,6 @@ RottenMangoes::Application.routes.draw do
     end
   end
 
+  get '/search', to: 'search#run'
+
 end
