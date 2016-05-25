@@ -6,3 +6,6 @@
       <p>Admin? <%= u.admin ? "YES" : "NO" %></p>
       <p>Number of reviews: <%= u.reviews.count  %></p>
     <% end %>
+
+    <hr />
+    <%= paginate @users %>

@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 
+# Pagination
+gem 'kaminari'
 #These two gems allow image uploads
 gem "paperclip"
 gem 'mini_magick'
