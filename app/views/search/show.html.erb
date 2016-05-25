@@ -1,1 +1,33 @@
-<h3>Search</h3>
+<% if @query %>
+    <h3>Searched for "<%= @query %>"</h3>
+    <hr />
+<% else %>
+    <h3>Search</h3>
+    <form id="searchbar" action="/search">
+    <label name="title">Title
+    <input type="text" name="title"></input></label>
+    <label name="title">Director
+    <input type="text" name="director"></input></label>
+    <label name="title">Duration
+    <%= select_tag 'duration', options_for_select(["Choose one...", "Under 90 minutes","Between 90 and 120 minutes","Over 120 minutes"]) %>
+    </label>
+
+    <input type="submit" name="Search" class="button"></input>
+    </form>
+<% end %>
+    <hr />
+
+<% if @movies && @movies.length > 0 %>
+    <h4>Found <%= @movies.length %> <%= @movies.length == 1 ? "result" : "results" %></h4>
+    <% @movies.each do |movie| %>
+        <%= link_to image_tag(movie.poster_image_url), movie_path(movie) %>
+        <h2><%= link_to movie.title, movie_path(movie) %></h2>
+        <h3><%= formatted_date(movie.release_date) %></h3>
+        <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
+        <p><%= movie.description %></p>
+        <p><%= movie.review_average %>/10</p>
+    <hr>
+  <% end %>
+<% else %>
+    <h4>Sorry we couldn't find any search results.... </h4>
+<% end %>
