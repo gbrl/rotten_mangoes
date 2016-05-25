@@ -12,14 +12,18 @@
 <header>
 <nav>
   <ul>
+
     <% if current_user && current_user.admin %>
     <li><%= link_to  "Admin", admin_users_path %></li>
     <% end %>
-     <% if current_user  %>
+    <% if current_user  %>
     <li><%= link_to  "My Profile", user_path(current_user.id) %></li>
     <% end %>
     <li><%= link_to "Movies", movies_path %></li>
     <li><%= link_to "Search", search_path %></li>
+    <% if masquerading? %>
+    <%= link_to "Stop Masquerading", unpossess_admin_user_path(current_user.id) %>
+    <% end %>
   </ul>
 </nav>
 <%= image_tag "logo.png", class: "logo" %>

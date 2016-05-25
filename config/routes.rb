@@ -11,6 +11,7 @@ RottenMangoes::Application.routes.draw do
     resources :users do
       member do
         get 'possess'
+        get 'unpossess'
       end
     end
   end

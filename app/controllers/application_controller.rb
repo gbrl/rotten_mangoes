@@ -18,4 +18,13 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+
+  def masquerading?
+    session[:admin_id].present? && current_user
+  end
+  
+  helper_method :masquerading?
+
+
+
 end
