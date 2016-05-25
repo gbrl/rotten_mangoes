@@ -11,14 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160524202309) do
+ActiveRecord::Schema.define(version: 20160525202618) do
 
   create_table "movies", force: :cascade do |t|
     t.string   "title"
     t.string   "director"
     t.integer  "runtime_in_minutes"
     t.text     "description"
-    t.string   "poster_image_url"
     t.datetime "release_date"
     t.string   "image_file_name"
     t.string   "image_content_type"
