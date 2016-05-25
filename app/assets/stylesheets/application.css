@@ -26,3 +26,4 @@ img.logo {width: 281px; height: 51px;}
 nav.pagination span {display: inline-block !important;}
 .purple {background-color: #800080 !important}
 .purple:hover {background-color: #900090 !important}
+#movies-index tr td img {min-width: 220px;}
