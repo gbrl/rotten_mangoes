@@ -1,0 +1,20 @@
+<h3>My Profile</h3>
+<h4><%= @user.firstname %> <%= @user.lastname %></h4>
+<ul id="user-info">
+<li><strong>First Name:</strong> <%= @user.firstname %></li>
+<li><strong>Last Name:</strong> <%= @user.lastname %></li>
+<li><strong>Email:</strong> <%= @user.email %></li>
+<li><strong>Admin?</strong> <%= @user.admin ? "YES" : "NO" %></li>
+<% if @user.reviews.count == 0 %>
+<li><strong>Number of reviews:</strong> <%= @user.reviews.count  %></li>
+<% else %>
+<li><hr /><strong>REVIEWS</strong></li>
+<ol>
+<% @user.reviews.each do |review| %>
+<li><strong><%= link_to review.movie.title, movie_path(review.movie) %></strong> &nbsp;<%= review.rating_out_of_ten %>/10 <br />
+<p><%= review.text %></p></li>
+<% end %>
+</ol>
+<% end %>
+</ul>
+
