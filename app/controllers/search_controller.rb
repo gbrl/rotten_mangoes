@@ -7,24 +7,23 @@ class SearchController < ApplicationController
     @director = ""
     @duration = ""
     
-    @title = params[:title].to_s if params[:title]
-    @director = params[:director].to_s if params[:director]
-    
-    @duration = params[:duration].to_s if params[:duration]
+    @query = params[:title_or_director].to_s 
+    @duration_query = params[:duration].to_s if params[:title_or_director].to_s == "" && params[:duration].to_s != "choose one..."
 
+    @duration = params[:duration].to_s if params.has_key? :duration
 
     case @duration
-    when "Under 90 minutes" 
-      @movies = Movie.short.where("title LIKE ? AND director LIKE ?", "%#{@title}%","%#{@director}%")
-    when "Between 90 and 120 minutes" 
-      @movies = Movie.medium.where("title LIKE ? AND director LIKE ?", "%#{@title}%","%#{@director}%")
-    when "Over 120 minutes"
-      @movies = Movie.long.where("title LIKE ? AND director LIKE ?", "%#{@title}%","%#{@director}%")
+    when "under 90 minutes" 
+      @movies = Movie.short.where("title LIKE ? OR director LIKE ?", "%#{@query}%","%#{@query}%")
+    when "between 90 and 120 minutes" 
+      @movies = Movie.medium.where("title LIKE ? OR director LIKE ?", "%#{@query}%","%#{@query}%")
+    when "over 120 minutes"
+      @movies = Movie.long.where("title LIKE ? OR director LIKE ?", "%#{@query}%","%#{@query}%")
     else
-      @movies = Movie.where("title LIKE ? AND director LIKE ?", "%#{@title}%","%#{@director}%")
+      @movies = Movie.where("title LIKE ? OR director LIKE ?", "%#{@query}%","%#{@query}%")
     end
 
-    @movies = [] unless params[:duration] && params[:director] && params[:title]
+    @movies = [] unless params[:duration] && params[:title_or_director]
     
   end
 
