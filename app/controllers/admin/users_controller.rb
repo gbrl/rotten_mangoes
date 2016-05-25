@@ -2,11 +2,12 @@ class Admin::UsersController < Admin::ApplicationController
 
   def index
     if check_admin
-    @users = User.order(:firstname).page params[:page]
+      @users = User.order(:firstname).page params[:page]
     else
       redirect_to movies_path
     end
   end
+
 
   def show
     if check_admin
@@ -16,9 +17,11 @@ class Admin::UsersController < Admin::ApplicationController
     end
   end
 
+
   def edit
     @user = User.find(params[:id])
   end
+
 
   def update
     @user = User.find(params[:id])
@@ -28,6 +31,7 @@ class Admin::UsersController < Admin::ApplicationController
       render :edit
     end
   end
+
 
   def destroy
     @user = User.find(params[:id])
@@ -49,6 +53,7 @@ class Admin::UsersController < Admin::ApplicationController
       redirect_to movies_path
     end
   end
+
 
   def unpossess
     admin_id = session[:admin_id]

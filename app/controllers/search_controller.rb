@@ -24,7 +24,6 @@ class SearchController < ApplicationController
     end
 
     @movies = [] unless params[:duration] && params[:title_or_director]
-    
   end
 
 end
