@@ -1,11 +1,13 @@
-    <h2>ADMIN: All Users</h2>
+    <h3>ADMIN | All Users</h3>
     <% @users.each do |u| %>
       <hr />
-      <h3><%= u.full_name %></h3>
+      <h4><%= u.firstname %> <%= u.lastname %></h4>
       <%= u.email %>
       <p>Admin? <%= u.admin ? "YES" : "NO" %></p>
       <p>Number of reviews: <%= u.reviews.count  %></p>
+      <%= link_to "Show", admin_user_path(u.id), class: "button success" %>
+      <%= link_to "Edit", edit_admin_user_path(u.id), class: "button" %>
+      <%= link_to "Delete", { action: "destroy", id: u.id }, method: :delete, data: { confirm: "Are you sure?" }, class: "button alert" %>
     <% end %>
-
     <hr />
     <%= paginate @users %>

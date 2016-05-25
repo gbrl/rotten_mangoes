@@ -8,7 +8,11 @@ RottenMangoes::Application.routes.draw do
   root to: 'movies#index'
 
   namespace :admin do
-    resources :users
+    resources :users do
+      member do
+        get 'possess'
+      end
+    end
   end
 
 end

@@ -1,0 +1,15 @@
+    <h3>ADMIN | Show User</h3>
+      <h4><%= @user.firstname %> <%= @user.lastname %></h4>
+      <ul id="user-info">
+      <li><strong>First Name:</strong> <%= @user.firstname %></li>
+      <li><strong>Last Name:</strong> <%= @user.lastname %></li>
+      <li><strong>Email:</strong> <%= @user.email %></li>
+      <li><strong>Admin?</strong> <%= @user.admin ? "YES" : "NO" %></li>
+      <li><strong>Number of reviews:</strong> <%= @user.reviews.count  %></li>
+      </ul>
+            <%= link_to "Edit", edit_admin_user_path(@user.id), class: "button" %>
+
+      <% unless current_user && (current_user.id == @user.id) %>
+      <%= link_to "Possess", possess_admin_user_path(@user.id), class: "button purple" %>
+      <%= link_to "Delete", { action: "destroy", id: @user.id }, method: :delete, data: { confirm: "Are you sure?" }, class: "button alert" %>
+      <% end %>

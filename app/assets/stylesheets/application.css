@@ -20,5 +20,9 @@ footer {margin-bottom: 50px;}
 form {max-width: 600px !important;}
 header nav {float: right;}
 header nav ul, header nav ul li {list-style: none;}
-
+#user-info, #user-info li {list-style: none; padding: 0; margin: 0;}
+#user-info {margin: 20px 0;}
+img.logo {width: 281px; height: 51px;}
 nav.pagination span {display: inline-block !important;}
+.purple {background-color: #800080 !important}
+.purple:hover {background-color: #900090 !important}
