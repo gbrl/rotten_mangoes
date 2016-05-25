@@ -1,15 +1,6 @@
     <%= link_to "Submit a movie!", new_movie_path, class: "big success button"%>
     <table id="movies-index">
     <% @movies.each do |movie| %>
-      <tr>
-        <td><%= link_to image_tag(movie.image.url), movie_path(movie) %></td>
-        <td>
-          <h2><%= link_to movie.title, movie_path(movie) %></h2>
-          <h3><%= formatted_date(movie.release_date) %></h3>
-          <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-          <p><%= truncate(movie.description, length: 400) %></p>
-          <p><%= movie.review_average %>/10</p>
-        </td>
-      </tr>
+    <%= render partial: 'movie', locals: {movie: movie}%>
     <% end %>
     </table>
