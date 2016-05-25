@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(current_user.id) if current_users
+    @user = User.find(current_user.id) if current_user
   end
 
   def create
