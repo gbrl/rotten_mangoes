@@ -1,5 +1,8 @@
 class MoviesController < ApplicationController
 
+  before_filter :restrict_access, :except => [:index, :show] 
+
+
   def index
     @movies = Movie.all
   end
@@ -11,19 +14,16 @@ class MoviesController < ApplicationController
 
 
   def new
-    restrict_access
     @movie = Movie.new
   end
 
 
   def edit
-    restrict_access
     @movie = Movie.find(params[:id])
   end
   
 
   def create
-    restrict_access
     @movie = Movie.new(movie_params)
     if @movie.save
       redirect_to movies_path, notice: "#{@movie.title} was submitted successfully!"
@@ -34,7 +34,6 @@ class MoviesController < ApplicationController
 
 
   def update
-    restrict_access
     @movie = Movie.find(params[:id])
     if @movie.update_attributes(movie_params)
       redirect_to movie_path(@movie)
@@ -45,7 +44,6 @@ class MoviesController < ApplicationController
 
 
   def destroy
-    restrict_access
     @movie = Movie.find(params[:id])
     @movie.destroy
     redirect_to movies_path
