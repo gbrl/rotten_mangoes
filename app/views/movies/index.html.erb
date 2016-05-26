@@ -1,6 +1,6 @@
-    <%= link_to "Submit a movie!", new_movie_path, class: "big success button"%>
-    <table id="movies-index">
-    <% @movies.each do |movie| %>
+<%= link_to "Submit a movie!", new_movie_path, class: "big success button"%>
+<table id="movies-index">
+  <% @movies.each do |movie| %>
     <%= render partial: 'movie', locals: {movie: movie}%>
-    <% end %>
-    </table>
+  <% end %>
+</table>
