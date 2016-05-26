@@ -21,7 +21,6 @@
 <% if @movies && @movies.length > 0 %>
     <h4>Found <%= @movies.length %> <%= @movies.length == 1 ? "result" : "results" %></h4>
     <% @movies.each do |movie| %>
-        <%= link_to image_tag(movie.poster_image_url), movie_path(movie) %>
         <h2><%= link_to movie.title, movie_path(movie) %></h2>
         <h3><%= formatted_date(movie.release_date) %></h3>
         <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
