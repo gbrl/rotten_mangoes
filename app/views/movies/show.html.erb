@@ -1,12 +1,15 @@
 <%= link_to "Back to all movies", movies_path %><br/>
 
 
-<h2><%= @movie.title %> (<%= link_to "edit", edit_movie_path(@movie) %>, <%= link_to "delete", movie_path(@movie), method: :delete, confirm: "You sure?" %>)</h2>
+<h2><%= @movie.title %></h2>
 <p><%= image_tag @movie.image.url.to_s %>
 <h3><%= formatted_date(@movie.release_date) %></h3>
 <h4>Dir. <%= @movie.director %> | <%= @movie.runtime_in_minutes %> minutes</h4>
 <p><%= @movie.description %></p>
 <p><%= @movie.review_average %>/10</p>
+<% if current_user %>
+<%= link_to "Edit", edit_movie_path(@movie), class: 'button' %> &nbsp; <%= link_to "Delete", movie_path(@movie), method: :delete, confirm: "You sure?", class: 'button alert' %>
+<% end %>
 <hr>
 
 <h3>Reviews of <em><%= @movie.title %></em></h3>
