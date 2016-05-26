@@ -21,7 +21,7 @@
     <li><%= link_to "Movies", movies_path %></li>
     <li><%= link_to "Search", search_path %></li>
     <% if masquerading? %>
-    <%= link_to "Stop Masquerading", unpossess_admin_user_path(current_user.id) %>
+    <%= link_to "Unpossess", unpossess_admin_user_path(current_user.id) %>
     <% end %>
   </ul>
 </nav>
