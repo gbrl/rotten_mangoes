@@ -38,7 +38,6 @@ class Admin::UsersController < Admin::ApplicationController
   def possess
     admin_id = current_user.id
     @user = User.find(params[:id])
-    session.clear
     session[:admin_id] = admin_id
     session[:user_id] = @user.id
     redirect_to admin_user_path(params[:id])
@@ -47,7 +46,6 @@ class Admin::UsersController < Admin::ApplicationController
 
   def unpossess
     admin_id = session[:admin_id]
-    session.clear
     session[:user_id] = admin_id
     redirect_to admin_user_path(params[:id])
   end
